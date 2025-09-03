@@ -5,6 +5,82 @@
   </head>
   <body>
     <h1>Welcome to My Portfolio!</h1>
-    <p>Hello, this is my first website hosted on GitHub Pages.</p>
+    <p>Hello, I’m Naja Challita. This is my first website hosted on GitHub Pages.</p>
+    <!-- Your 3D icons will go here -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script>
+  // Set up the scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer.setSize(400, 400); // Canvas size
+  document.body.appendChild(renderer.domElement);
+
+  // Example languages
+  const languages = [
+    { name: "JavaScript", color: 0xffd700 },
+    { name: "Python", color: 0x306998 },
+    { name: "HTML", color: 0xe34c26 },
+    { name: "CSS", color: 0x264de4 },
+    { name: "C++", color: 0x00599c }
+  ];
+
+  // Arrange spheres in a circle
+  const radius = 1.5;
+  const spheres = [];
+  languages.forEach((lang, i) => {
+    const angle = (i / languages.length) * Math.PI * 2;
+    const geometry = new THREE.SphereGeometry(0.25, 32, 32);
+    const material = new THREE.MeshStandardMaterial({ color: lang.color });
+    const sphere = new THREE.Mesh(geometry, material);
+    sphere.position.x = Math.cos(angle) * radius;
+    sphere.position.y = Math.sin(angle) * radius;
+    sphere.userData = { name: lang.name };
+    scene.add(sphere);
+    spheres.push(sphere);
+  });
+
+  // Add a light
+  const light = new THREE.PointLight(0xffffff, 1);
+  light.position.set(0, 0, 5);
+  scene.add(light);
+
+  camera.position.z = 5;
+
+  // Hover effect
+  let hovered = null;
+  renderer.domElement.addEventListener('mousemove', (event) => {
+    const mouse = {
+      x: (event.offsetX / 400) * 2 - 1,
+      y: -(event.offsetY / 400) * 2 + 1
+    };
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(spheres);
+    if (intersects.length > 0) {
+      if (hovered && hovered !== intersects[0].object) {
+        hovered.material.emissive.setHex(0x000000);
+      }
+      hovered = intersects[0].object;
+      hovered.material.emissive.setHex(0x333333);
+      renderer.domElement.style.cursor = "pointer";
+    } else {
+      if (hovered) hovered.material.emissive.setHex(0x000000);
+      hovered = null;
+      renderer.domElement.style.cursor = "";
+    }
+  });
+
+  // Animation loop to float spheres
+  function animate() {
+    requestAnimationFrame(animate);
+    spheres.forEach((s, i) => {
+      s.position.z = Math.sin(Date.now() * 0.002 + i) * 0.3;
+    });
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>
+  
   </body>
 </html>
