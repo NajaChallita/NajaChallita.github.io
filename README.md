@@ -26,6 +26,29 @@
 - AI integration : OpenAI API 
 - Software Development: Full-stack web & mobile applications, POS systems
 - Certifications: Oracle Certified Associate (Java SE-8 scored 93%)
+
+>>Projects
+- ChallitaShop (POS System)
+  A custom Point of Sale (POS) application built using Windows Forms and MySQL, tailored for real business operations including inventory management, sales tracking, and reporting. 
+
+- JWomenCloset (E-Commerce Website)
+  A modern, responsive Shopify-based e-commerce site built to support business storefront needs. 
+
+- WhealsDeals (Full-Stack Car Dealership Platform)
+  A full-stack web application featuring customer and manager interfaces, CRUD operations for cars and users, an interactive dashboard, 3D car visuals, and comparison tools (including Android and MAUI mobile versions). 
+
+- JANE (AI 3D Avatar Assistant) 
+  A real-time conversational AI assistant with speech recognition, natural language processing, animated 3D avatar, and browser automation capabilities. 
+
+- Data Analysis Dashboard (Spotify BI)  
+  A predictive and descriptive analytics dashboard analyzing user behavior, revenue forecasts, and engagement trends for a music streaming platform.
+
+- LB Hospital Dashboard (PHP & MongoDB)  
+  A data analytics and CRUD platform built in PHP with MongoDB back-end for complex query support and efficient data management.
+
+- NeuroAssist (Educational Platform) 
+  An autism-friendly learning platform with features similar to Moodle or Blackboard, offering academic resources and tools for students. 
+
  
 >>Contact / Get Involved
 
